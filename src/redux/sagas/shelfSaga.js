@@ -14,7 +14,7 @@ function* fetchShelf(action) {
 
 }
 
-function* postShelf(){
+function* postShelf(action){
     try {
         yield axios.post('/shelf', action.payload);
         const nextAction = { type: 'GET_SHELF' };
@@ -26,7 +26,7 @@ function* postShelf(){
 
 }
 
-function deleteShelf(){
+function* deleteShelf(action){
     try {
         yield axios.delete(`api/shelf/${action.payload}`)
 
