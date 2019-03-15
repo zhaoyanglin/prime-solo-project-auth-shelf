@@ -6,7 +6,8 @@ function* fetchShelf(action) {
     console.log('shelf saga hit', action);
     
     try {
-        const shelfResponse = yield axios.get('/shelf');
+        const shelfResponse = yield axios.get('/api/shelf');
+        console.log(shelfResponse);
         yield put({ type: 'GET_SHELF', payload: shelfResponse.data })
     } catch (error) {
         console.log(error);
@@ -17,7 +18,7 @@ function* fetchShelf(action) {
 function* postShelf(action){
     try {
         yield axios.post('/api/shelf', action.payload);
-        const nextAction = { type: 'GET_SHELF' };
+        const nextAction = { type: 'FETCH_SHELF' };
         yield put(nextAction);
     } catch (error) {
         console.log('Error making POST request');
