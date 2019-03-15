@@ -1,6 +1,4 @@
 import React from 'react';
-import AddItemForm from '../AddItemForm/AddItemForm';
-import ShelfTable from '../ShelfTable/ShelfTable'
 // This is one of our simplest components
 // It doesn't have local state, so it can be a function component.
 // It doesn't dispatch any redux actions or display any part of redux state
@@ -9,11 +7,9 @@ import ShelfTable from '../ShelfTable/ShelfTable'
 const AboutPage = () => (
   <div>
     <div>
-      <p>
+        <p>
         This about page is for anyone to read!
-        <AddItemForm />
-        <ShelfTable />
-      </p>
+        </p>
     </div>
   </div>
 );
