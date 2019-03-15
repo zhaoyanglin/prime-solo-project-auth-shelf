@@ -28,7 +28,7 @@ router.post('/', (req, res) => {
 
     const queryText = 'INSERT INTO "item" (description, image_url, user_id) VALUES ($1, $2, $3);'
 
-    const queryItem = [req.body.description, req.body.image_url, req.body.user_id]
+    const queryItem = [req.body.description, req.body.url, req.body.user_id]
 
     pool.query(queryText, queryItem)
     .then( () => {
