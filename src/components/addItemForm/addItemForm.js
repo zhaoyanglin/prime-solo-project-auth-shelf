@@ -9,12 +9,12 @@ const mapStateToProps = reduxState => ({
 
 class addItemForm extends Component {
     state = {
-        newItem:{
+        newItem: {
             description: '',
             url: '',
             user_id: 0,
         }
-        }
+    }
 
 
     handleNameChange = (key) => (event) => {
@@ -27,7 +27,7 @@ class addItemForm extends Component {
         });
     }
 
-    addNewPlant = event => {
+    addNewItem = event => {
         event.preventDefault();
         this.props.dispatch({ type: 'POST_SHELF', payload: this.state.newItem })
         this.setState({
@@ -42,7 +42,7 @@ class addItemForm extends Component {
     render() {
         return (
             <div>
-                <h3>This is the form</h3>
+               
 
                 <form onSubmit={this.addNewItem}>
                     <Input placeholder='Description' type='text' value={this.state.newItem.description} onChange={this.handleNameChange('description')} />
