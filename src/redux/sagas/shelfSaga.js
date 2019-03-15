@@ -31,7 +31,7 @@ function* deleteShelf(action){
     try {
         yield axios.delete(`api/shelf/${action.payload}`)
 
-        yield put({ type: 'GET_SHELF' })
+        yield put({ type: 'FETCH_SHELF' })
     } catch (error) {
         console.log('DELETE ', error)
     }

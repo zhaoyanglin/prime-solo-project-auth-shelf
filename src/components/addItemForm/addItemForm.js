@@ -10,7 +10,7 @@ class AddItemForm extends Component {
         newItem: {
             description: '',
             url: '',
-            user_id: 1,
+            user_id: this.props.user.id,
         }
     }
 
@@ -33,12 +33,15 @@ class AddItemForm extends Component {
                 ...this.state.newItem,
                 description: '',
                 url: '',
-                
+                user_id: this.props.user.id
             }
         });
     }
 
     render() {
+        console.log(this.props.user.id);
+        console.log(this.state.newItem);
+        
         return (
             <div>
                
@@ -54,7 +57,7 @@ class AddItemForm extends Component {
 }
 
 const mapStateToProps = state => ({
-    user: state.user,
+    user: state.user
 });
 
 // this allows us to use <App /> in index.js
