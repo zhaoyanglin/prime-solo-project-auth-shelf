@@ -3,16 +3,14 @@ import { connect } from 'react-redux';
 import Input from '@material-ui/core/Input';
 import { Button } from '@material-ui/core';
 
-const mapStateToProps = reduxState => ({
-    reduxState,
-});
 
-class addItemForm extends Component {
+
+class AddItemForm extends Component {
     state = {
         newItem: {
             description: '',
             url: '',
-            user_id: 0,
+            user_id: 1,
         }
     }
 
@@ -32,9 +30,10 @@ class addItemForm extends Component {
         this.props.dispatch({ type: 'POST_SHELF', payload: this.state.newItem })
         this.setState({
             newItem: {
+                ...this.state.newItem,
                 description: '',
                 url: '',
-                user_id: 0
+                
             }
         });
     }
@@ -47,7 +46,6 @@ class addItemForm extends Component {
                 <form onSubmit={this.addNewItem}>
                     <Input placeholder='Description' type='text' value={this.state.newItem.description} onChange={this.handleNameChange('description')} />
                     <Input placeholder='url' type='text' value={this.state.newItem.url} onChange={this.handleNameChange('url')} />
-                    <Input placeholder='user_id' type='text' value={this.state.newItem.user_id} onChange={this.handleNameChange('user_id')} />
                     <Button type='submit' value='Add New Item'>Add Item</Button>
                 </form>
             </div>
@@ -55,5 +53,9 @@ class addItemForm extends Component {
     }
 }
 
+const mapStateToProps = state => ({
+    user: state.user,
+});
 
-export default connect(mapStateToProps)(addItemForm);
+// this allows us to use <App /> in index.js
+export default connect(mapStateToProps)(AddItemForm);

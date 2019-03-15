@@ -6,12 +6,12 @@ const router = express.Router();
  * Get all of the items on the shelf
  */
 router.get('/', (req, res) => {
-    const queryText = 'SELECT * FROM "item";'
+    const queryText = `SELECT * FROM "item";`
     pool.query(queryText)
         .then(results => {
-            console.log(results.row);
+            console.log(results.rows);
 
-            res.send(results.row)
+            res.send(results.rows)
         })
         .catch(error => {
             console.log('SELECT item error:', error);
